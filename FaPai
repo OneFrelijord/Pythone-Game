@@ -1,0 +1,58 @@
+import random
+lista=[]#原始有序序列
+listb=[]#无序序列
+listc=[]#切牌序列
+listc1=[]#切掉最后三张的序列
+listc11=[]#发牌序列
+listc12=[]#发牌序列
+listc13=[]#发牌序列
+listc2=[]#三张底牌序列
+listd11=[]#理牌listc11
+listd12=[]#理牌listc12
+listd13=[]#理牌listc13
+for i in range(1,55):
+    lista.append(i)
+print(lista)
+
+for i in range(1,55):
+    randB=random.randint(0,len(lista)-1)
+    listb.append(lista[randB])
+    del lista[randB]
+print(listb)
+
+randC=random.randint(1,55)
+print(randC)
+for i in range(0,54):
+    if listb[i]==randC:
+        randC2=i+1
+listc=listb[randC2:]
+print(listc)
+
+listc1=listc[:-3]
+listc2=listc[-3:]
+for i in range(0,len(listc1),3):
+    listc11.append(listc1[i])
+for i in range(1, len(listc1), 3):
+    listc12.append(listc1[i])
+for i in range(2,len(listc1),3):
+    listc13.append(listc1[i])
+print(listc1)
+print(listc11)
+print(listc12)
+print(listc13)
+print(listc2)
+
+rand6=random.randint(1,4)
+if rand6==1:
+    listc11=listc11+listc2
+elif rand6==2:
+    listc12=listc12+listc2
+else:
+    listc13=listc13+listc2
+
+listd11=sorted(listc11,reverse=True)
+listd12=sorted(listc12,reverse=True)
+listd13=sorted(listc13,reverse=True)
+print(listd11)
+print(listd12)
+print(listd13)
